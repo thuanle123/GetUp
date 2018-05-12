@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">Alarm</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_math_activity">Math Test</string>
+
+    //math_activity strings
+    <string name="value_one">Value_One</string>
+    <string name="value_two">Value_Two</string>
+    <string name="operation">op</string>
+    <string name="equal_sign">=</string>
+    <string name="randomize">Randomize</string>
+    <string name="check_solution">Enter</string>
+    <string name="value_solution">Solution</string>
+    <string name="status">Status: Enter Solution</string>
 </resources>
