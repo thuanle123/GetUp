@@ -23,6 +23,9 @@
             android:name=".math_activity"
             android:label="@string/title_activity_math_activity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <receiver android:name=".Alarm" />
+
+        <service android:name=".RingtoneService" android:enabled="true"></service>
     </application>
 
 </manifest>

@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     TextView update_text;
     Context context;
     PendingIntent pending_intent;
-
+    //Here's a change
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,14 +47,12 @@ public class MainActivity extends AppCompatActivity {
         // create an instance of a calendar
         final Calendar calendar = Calendar.getInstance();
 
+        //create an intent
+        final Intent intent = new Intent(this.context, Alarm.class);
+
         // initialize Set Alarm
         Button alarm_on = (Button) findViewById(R.id.Set_Alarm);
         // create an onClickListener to start the alarm
-
-        //create an intent
-
-        final Intent intent = new Intent(this.context, Alarm.class);
-
 
         //finished by Thuan Le
         alarm_on.setOnClickListener(new View.OnClickListener() {
@@ -68,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 int hour = alarm_timepicker.getHour();
                 int minute = alarm_timepicker.getMinute();
 
-                // conver the int values to strings
+                // convert the int values to strings
 
                 String hour_string = String.valueOf(hour);
                 String minute_string = String.valueOf(minute);
@@ -85,7 +83,10 @@ public class MainActivity extends AppCompatActivity {
 
                 set_alarm_test("Alarm set to: " + hour_string + ":" + minute_string);
 
-                // create a pending intent that delays the intent
+                //put extra info in intent(Tells clock that alarm on button was pressed)
+                intent.putExtra("extra", "alarm on");
+
+                // create a pending intent which delays the intent
                 // until the specified calendar time
                 pending_intent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -104,6 +105,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //set the update that change the update text TextBox
                 set_alarm_test("Alarm off!");
+
+                //Cancels the alarm
+                alarm_manager.cancel(pending_intent);
+
+                //put extra info into intent(Tells clock that alarm off was pressed)
+                intent.putExtra("extra", "alarm off");
+
+                //stop ringtone
+                sendBroadcast(intent);
             }
         });
 
