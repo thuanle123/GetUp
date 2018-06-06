@@ -7,4 +7,10 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/moving_button"
+        android:title="Mving Btn" />
+    <item
+        android:id="@+id/light_puzzle"
+        android:title="Light Pzl" />
 </menu>

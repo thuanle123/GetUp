@@ -2,8 +2,10 @@
     <string name="app_name">Alarm</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_math_activity">Math Test</string>
+    <string name="tap_me">Tap me!</string>
+    <string name="make_me_green"> Make Me Green! </string>
 
-    //math_activity strings
+    <!-- This is not a java file, you cannot comment with "//". You need to use the markers on either end of this comment -->
     <string name="value_one">Value_One</string>
     <string name="value_two">Value_Two</string>
     <string name="operation">op</string>

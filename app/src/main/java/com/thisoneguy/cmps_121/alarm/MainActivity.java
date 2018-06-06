@@ -1,15 +1,20 @@
 package com.thisoneguy.cmps_121.alarm;
 
+import android.Manifest;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,14 +31,23 @@ public class MainActivity extends AppCompatActivity {
     TextView update_text;
     Context context;
     PendingIntent pending_intent;
-    //Here's a change
+    private final String TAG = "TESTGPS";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        this.context = this;
+        this.context = this; //Is this necessary?
+
+        // This statement requests permission from the user.
+        // If permissions are not set in the Manifest file, then access
+        // will automatically be denied. Once the user chooses an option,
+        // onRequestPermissionsResult is called.
+        ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                99);
 
         // initialize our alarm manager
         alarm_manager = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -153,9 +167,54 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        } else if (id == R.id.moving_button) {
+            Intent movingButton = new Intent(this, MovingButton.class);
+            startActivity(movingButton);
+        } else if (id == R.id.light_puzzle) {
+            Intent lightPuzzle = new Intent(this, LightPuzzle.class);
+            startActivity(lightPuzzle);
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    // This class implements OnRequestPermissionsResultCallback, so when the
+    // user is prompted for location permission, the below method is called
+    // as soon as the user chooses an option.
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        Log.d(TAG, "callback");
+        switch (requestCode) {
+            case 99:
+                // If the permissions aren't set, then return. Otherwise, proceed.
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
+                        PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
+                        Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
+                                        Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.INTERNET}
+                                , 10);
+                    }
+                    Log.d(TAG, "returning program");
+                    return;
+                } else {
+                    // Create Intent to reference MyService, start the Service.
+                    Log.d(TAG, "starting service");
+                    Intent i = new Intent(this, GPSService.class);
+                    if (i == null)
+                        Log.d(TAG, "intent null");
+                    else {
+                        startService(i);
+                    }
+
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+
 
 }

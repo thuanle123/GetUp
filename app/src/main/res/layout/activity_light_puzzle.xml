@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lights_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LightPuzzle">
+
+    <Button
+        android:id="@+id/light_0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow"
+        android:onClick="lightTapped"
+        android:text="@string/make_me_green"
+        app:layout_constraintBottom_toTopOf="@+id/light_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/light_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow"
+        android:onClick="lightTapped"
+        android:text="@string/make_me_green"
+        app:layout_constraintBottom_toTopOf="@+id/light_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/light_0" />
+
+    <Button
+        android:id="@+id/light_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow"
+        android:onClick="lightTapped"
+        android:text="@string/make_me_green"
+        app:layout_constraintBottom_toTopOf="@+id/light_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/light_1" />
+
+    <Button
+        android:id="@+id/light_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow"
+        android:onClick="lightTapped"
+        android:text="@string/make_me_green"
+        app:layout_constraintBottom_toTopOf="@+id/light_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/light_2" />
+
+    <Button
+        android:id="@+id/light_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow"
+        android:onClick="lightTapped"
+        android:text="@string/make_me_green"
+        app:layout_constraintBottom_toTopOf="@+id/light_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/light_3" />
+
+    <Button
+        android:id="@+id/light_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow"
+        android:onClick="lightTapped"
+        android:text="@string/make_me_green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/light_4" />
+</android.support.constraint.ConstraintLayout>
