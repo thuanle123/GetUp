@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        this.context = this; //Is this necessary?
+        this.context = this; //Is this necessary? "this" should already be "this"
 
         // This statement requests permission from the user.
         // If permissions are not set in the Manifest file, then access
@@ -121,7 +121,9 @@ public class MainActivity extends AppCompatActivity {
                 set_alarm_test("Alarm off!");
 
                 //Cancels the alarm
-                alarm_manager.cancel(pending_intent);
+                if (pending_intent != null) { //Needs this check to prevent null pointer exceptions
+                    alarm_manager.cancel(pending_intent);
+                }
 
                 //put extra info into intent(Tells clock that alarm off was pressed)
                 intent.putExtra("extra", "alarm off");
@@ -173,6 +175,9 @@ public class MainActivity extends AppCompatActivity {
         } else if (id == R.id.light_puzzle) {
             Intent lightPuzzle = new Intent(this, LightPuzzle.class);
             startActivity(lightPuzzle);
+        } else if (id == R.id.gyro) {
+            Intent gyroActivity = new Intent(this, GyroCheck.class);
+            startActivity(gyroActivity);
         }
 
         return super.onOptionsItemSelected(item);

@@ -4,6 +4,7 @@
     <string name="title_activity_math_activity">Math Test</string>
     <string name="tap_me">Tap me!</string>
     <string name="make_me_green"> Make Me Green! </string>
+    <string name="gyro_rotation_text">Rotate me!</string>
 
     <!-- This is not a java file, you cannot comment with "//". You need to use the markers on either end of this comment -->
     <string name="value_one">Value_One</string>
