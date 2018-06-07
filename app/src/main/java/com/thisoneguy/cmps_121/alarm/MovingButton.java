@@ -3,6 +3,7 @@ package com.thisoneguy.cmps_121.alarm;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -21,9 +22,13 @@ public class MovingButton extends AppCompatActivity {
     public int lowerLimit = 1000; // this can be lowered to 500 but it becomes much more difficult. Dunno if a sleepy person could do it.
     public int speedIncreasePotency = 500;
     public Timer timer;
+    MediaPlayer alarmsong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        alarmsong = MediaPlayer.create(this, R.raw.alarm_sound);
+        alarmsong.setLooping(true);
+        alarmsong.start();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_moving_button);
 
@@ -45,14 +50,14 @@ public class MovingButton extends AppCompatActivity {
         } else {
             timer.cancel();
             timer.purge();
-            //do something (like silence alarm). Victory condition.
-
-            //for now go back to main screen
+            //victory condition, snooze alarm
+            alarmsong.stop();
+            alarmsong.reset();
+            //go back to main screen
             Intent mainScreen = new Intent(this, MainActivity.class);
             mainScreen.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(mainScreen);
             finish();
-
         }
     }
 

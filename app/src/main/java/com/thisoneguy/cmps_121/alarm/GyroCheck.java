@@ -6,6 +6,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -20,10 +21,13 @@ public class GyroCheck extends AppCompatActivity {
     float[] orientations;
     TextView gyroText;
     ConstraintLayout myLayout;
-
+    MediaPlayer alarmsong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        alarmsong = MediaPlayer.create(this, R.raw.alarm_sound);
+        alarmsong.setLooping(true);
+        alarmsong.start();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gyro_check);
 
@@ -78,15 +82,19 @@ public class GyroCheck extends AppCompatActivity {
                     myLayout.setBackgroundColor(Color.YELLOW);
                     gyroText.setTextColor(Color.BLACK);
                 } else if ((orientations[2] > 175) && (orientations[2] <= 180)) {
-                    //Do something (like snooze the alarm)
-                    //for no go back to the main screen
+                    //Snooze alarm
+                    //Go back to main screen
+                    alarmsong.stop();
+                    alarmsong.reset();
                     Intent mainScreen = new Intent(getApplicationContext(), MainActivity.class);
                     mainScreen.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(mainScreen);
 
                 } else if ((orientations[2] < -175) && (orientations[2] >= -180)) {
-                    //Do something (like snooze the alarm)
-                    //for no go back to the main screen
+                    //Snooze alarm
+                    //go back to the main screen
+                    alarmsong.stop();
+                    alarmsong.reset();
                     Intent mainScreen = new Intent(getApplicationContext(), MainActivity.class);
                     mainScreen.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(mainScreen);

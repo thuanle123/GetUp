@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.media.MediaPlayer;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -128,6 +127,7 @@ public class math_activity extends AppCompatActivity {
             if (sol == Integer.parseInt(solution.getText().toString())) {
                 Log.d("DEBUG", "Correct!");
                 status.setText("Status: Correct");
+                //victory condition, snooze alarm
                 alarmsong.stop();
                 alarmsong.reset();
             } else {

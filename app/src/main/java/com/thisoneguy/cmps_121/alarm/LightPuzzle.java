@@ -2,9 +2,10 @@ package com.thisoneguy.cmps_121.alarm;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
@@ -13,10 +14,13 @@ import java.util.Random;
 public class LightPuzzle extends AppCompatActivity {
     public boolean[] lights = {false, true, false, true, false, false};
     public Button[] buttons= {null, null, null, null, null, null};
-
+    MediaPlayer alarmsong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        alarmsong = MediaPlayer.create(this, R.raw.alarm_sound);
+        alarmsong.setLooping(true);
+        alarmsong.start();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_light_puzzle);
 
@@ -96,14 +100,14 @@ public class LightPuzzle extends AppCompatActivity {
             }
         }
         if (complete) {
-            //do something (like stop alarm). Victory condition.
-
-            //for now go back to main screen
+            //Victory condition, snooze alarm
+            alarmsong.stop();
+            alarmsong.reset();
+            //go back to main screen
             Intent mainScreen = new Intent(this, MainActivity.class);
             mainScreen.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(mainScreen);
             finish();
-
         }
     }
 }
