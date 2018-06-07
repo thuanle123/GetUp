@@ -53,11 +53,13 @@ public class RingtoneService extends Service{
         }
         //if alarm is playing & user presses alarm off
         //alarm will stop
+        //idea: stop alarm but start an intent, and make alarm start again on new intent until they finish activity
         else if(this.isRunning && startId == 0){
             alarmsong.stop();
             alarmsong.reset();
             this.isRunning = false;
             this.startId = 0;
+            startActivity(new Intent(RingtoneService.this, math_activity.class));
         }
         else {
             this.isRunning = false;

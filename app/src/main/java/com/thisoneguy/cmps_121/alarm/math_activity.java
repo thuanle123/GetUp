@@ -2,10 +2,12 @@ package com.thisoneguy.cmps_121.alarm;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.media.MediaPlayer;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -18,13 +20,16 @@ import java.util.Random;
 public class math_activity extends AppCompatActivity {
     private EditText solution;
     private Button check, randomize;
+    MediaPlayer alarmsong;
     private TextView valueOne, valueTwo, status, operation;
-
     private int num1, num2, sol;
     private char op;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        alarmsong = MediaPlayer.create(this, R.raw.alarm_sound);
+        alarmsong.setLooping(true);
+        alarmsong.start();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_math_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -123,6 +128,8 @@ public class math_activity extends AppCompatActivity {
             if (sol == Integer.parseInt(solution.getText().toString())) {
                 Log.d("DEBUG", "Correct!");
                 status.setText("Status: Correct");
+                alarmsong.stop();
+                alarmsong.reset();
             } else {
                 Log.d("DEBUG", "Wrong!");
                 status.setText("Status: Incorrect!");
