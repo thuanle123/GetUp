@@ -5,9 +5,11 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
@@ -137,7 +139,28 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, math_activity.class));
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                //check which switch is on and run corresponding activity
+                if (prefs.getBoolean("switch_mental", true)) {
+                    String gameChoice = prefs.getString("game_list", "0");
+                    switch (gameChoice){
+                        case "0":
+                            startActivity(new Intent(MainActivity.this, math_activity.class));
+                            break;
+                        case "1":
+                            startActivity(new Intent(MainActivity.this, MovingButton.class));
+                            break;
+                        case "2":
+                            startActivity(new Intent(MainActivity.this, LightPuzzle.class));
+                    }
+
+                }
+                /* Uncomment this when the physical activity with gps/gyro is implemented
+                else if (prefs.getBoolean("switch_physical", true)){
+                    startActivity(new Intent(MainActivity.this, [PHYSICAL_ACTIVITY_NAME].class));
+                }
+                */
+
                 /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();*/
             }
@@ -166,6 +189,8 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent settings = new Intent(this, SettingsActivity.class);
+            startActivity(settings);
             return true;
         } else if (id == R.id.moving_button) {
             Intent movingButton = new Intent(this, MovingButton.class);

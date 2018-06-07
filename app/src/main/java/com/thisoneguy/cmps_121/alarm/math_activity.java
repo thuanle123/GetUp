@@ -1,9 +1,9 @@
 package com.thisoneguy.cmps_121.alarm;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -29,6 +29,7 @@ public class math_activity extends AppCompatActivity {
         setContentView(R.layout.activity_math_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getWindow().getDecorView().setBackgroundColor(Color.DKGRAY);
 
         //returns to main activity
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

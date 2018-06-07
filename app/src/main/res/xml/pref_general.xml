@@ -1,0 +1,28 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:id="@+id/switch_physical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:defaultValue="true"
+        android:key="switch_physical"
+        android:summary="@string/pref_description_physical"
+        android:title="@string/pref_title_physical" />
+    <SwitchPreference
+        android:id="@+id/switch_mental"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:defaultValue="false"
+        android:key="switch_mental"
+        android:summary="@string/pref_description_mental"
+        android:title="@string/pref_title_mental" />
+    <ListPreference
+        android:defaultValue="0"
+        android:dependency="switch_mental"
+        android:entries="@array/game_entries"
+        android:entryValues="@array/game_values"
+        android:key="game_list"
+        android:summary="Choose which game will run: %s is currently selected."
+        android:title="Game Options" />
+
+</PreferenceScreen>

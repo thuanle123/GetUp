@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="game_entries">
+        <item>Math Problem</item>
+        <item>Button Chase</item>
+        <item>Color Matcher</item>
+    </string-array>
+    <string-array name="game_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>
