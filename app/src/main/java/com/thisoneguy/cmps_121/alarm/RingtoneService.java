@@ -37,6 +37,7 @@ public class RingtoneService extends Service{
         //no alarm playing & user pressed alarm on
         if(!this.isRunning && startId == 1) {
             alarmsong = MediaPlayer.create(this, R.raw.alarm_sound);
+            alarmsong.setLooping(true);
             alarmsong.start();
 
             this.isRunning = true;

@@ -31,14 +31,16 @@ public class math_activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getWindow().getDecorView().setBackgroundColor(Color.DKGRAY);
 
+        getWindow().getDecorView().setBackgroundColor(Color.DKGRAY);
+
         //returns to main activity
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(math_activity.this, MainActivity.class));
-                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
+                Intent mainScreen = new Intent(getApplicationContext(), MainActivity.class);
+                mainScreen.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(mainScreen);
             }
         });
 
