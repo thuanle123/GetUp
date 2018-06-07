@@ -157,11 +157,9 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 }
-                /* Uncomment this when the physical activity with gps/gyro is implemented
                 else if (prefs.getBoolean("switch_physical", true)){
-                    startActivity(new Intent(MainActivity.this, [PHYSICAL_ACTIVITY_NAME].class));
+                    startActivity(new Intent(MainActivity.this, GyroCheck.class));
                 }
-                */
 
                 /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();*/

@@ -17,6 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".MainActivity"
             android:label="Get Up"
@@ -27,26 +28,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".math_activity"
             android:label="@string/title_activity_math_activity"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".MovingButton" />
+        <activity android:name=".LightPuzzle" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+        <activity android:name=".LightPuzzle" />
+
+        <activity android:name=".GyroCheck"
+            android:screenOrientation="portrait"></activity>
 
         <receiver android:name=".Alarm" />
 
         <service
             android:name=".RingtoneService"
             android:enabled="true" />
-
-        <activity android:name=".MovingButton" />
-        <activity android:name=".LightPuzzle" />
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings">
-        </activity>
-        <activity android:name=".LightPuzzle" />
-        <activity android:name=".GyroCheck"
-            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
