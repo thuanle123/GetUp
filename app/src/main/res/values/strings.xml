@@ -12,9 +12,9 @@
     <string name="operation">op</string>
     <string name="equal_sign">=</string>
     <string name="randomize">Randomize</string>
-    <string name="check_solution">Enter</string>
+    <string name="check_solution">Submit</string>
     <string name="value_solution">Solution</string>
-    <string name="status">Status: Enter Solution</string>
+    <string name="status">Enter The Solution</string>
     <string name="title_activity_settings">Settings</string>
 
 

@@ -4,11 +4,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,6 +35,7 @@ public class math_activity extends AppCompatActivity {
 
         getWindow().getDecorView().setBackgroundColor(Color.DKGRAY);
 
+        /*
         //returns to main activity
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +46,7 @@ public class math_activity extends AppCompatActivity {
                 startActivity(mainScreen);
             }
         });
+        */
 
         init();
     }
@@ -125,13 +125,15 @@ public class math_activity extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(solution.getText())) {
             if (sol == Integer.parseInt(solution.getText().toString())) {
-                Log.d("DEBUG", "Correct!");
                 status.setText("Status: Correct");
                 //victory condition, snooze alarm
                 alarmsong.stop();
                 alarmsong.reset();
+                Intent mainScreen = new Intent(this, MainActivity.class);
+                mainScreen.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(mainScreen);
+                finish();
             } else {
-                Log.d("DEBUG", "Wrong!");
                 status.setText("Status: Incorrect!");
             }
         }

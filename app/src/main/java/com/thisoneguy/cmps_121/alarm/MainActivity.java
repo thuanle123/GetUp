@@ -201,6 +201,9 @@ public class MainActivity extends AppCompatActivity {
         } else if (id == R.id.gyro) {
             Intent gyroActivity = new Intent(this, GyroCheck.class);
             startActivity(gyroActivity);
+        } else if (id == R.id.math_problem) {
+            Intent mathProblem = new Intent(this, math_activity.class);
+            startActivity(mathProblem);
         }
 
         return super.onOptionsItemSelected(item);

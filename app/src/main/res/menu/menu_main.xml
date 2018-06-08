@@ -16,4 +16,7 @@
     <item
         android:id="@+id/gyro"
         android:title="Gyro" />
+    <item
+        android:id="@+id/math_problem"
+        android:title="Math Problem" />
 </menu>
